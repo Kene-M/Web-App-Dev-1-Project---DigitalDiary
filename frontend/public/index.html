@@ -24,11 +24,267 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+
+    <!--I added a stylesheet into the public folder, idk if thats where its supposed to go tho-->
+    <link rel="stylesheet" href="styles.css">
     <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    
+    <nav class="navbar" id="navbar" >
+            <div class="nav-container">
+                <div class="nav-left">
+                    <h1 class="logo">DigitalDiary</h1>
+                    <a href="#" class="nav-link" onclick="showPage('feed')">
+                        <span class="nav-button">Home</span>
+                    </a>
+                    <a href="#" class="nav-link" onclick="showPage('create')">
+                        <span class="nav-button">Create</span>
+                    </a>
+                </div>
+                <div class="nav-right">
+                        <span id="username-display">User</span>
+                    </a>
+                    <a href="#" class="nav-link logout" onclick="logout()">
+                        <span class="nav-button">Logout</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="login">
+            <!-- Login Page -->
+            <div id="login-page" class="page active">
+                <div class="auth-card">
+                    <h2 class="auth-title">Welcome to DigitalDiary</h2>
+                    <p class="auth-subtitle">Sign in to share your thoughts</p>
+                    
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="login-username">Username</label>
+                            <input type="text" id="login-username" placeholder="Enter your username" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" placeholder="Enter your password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                    
+                    <p class="auth-footer">
+                        Don't have an account? 
+                        <a href="#" onclick="showPage('register')">Register here</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Register Page -->
+            <div id="register-page" class="page">
+                <div class="auth-card">
+                    <h2 class="auth-title">Create Account</h2>
+                    <p class="auth-subtitle">Join our blogging community</p>
+                    
+                    <form id="register-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="register-username">Username</label>
+                            <input type="text" id="register-username" placeholder="Choose a username" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" id="register-email" placeholder="your.email@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <input type="password" id="register-password" placeholder="Create a password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-confirm">Confirm Password</label>
+                            <input type="password" id="register-confirm" placeholder="Confirm your password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                    
+                    <p class="auth-footer">
+                        Already have an account? 
+                        <a href="#" onclick="showPage('login')">Login here</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Community Feed Page -->
+            <div id="feed-page" class="page">
+                <div class="feed-header">
+                    <h2>Community Feed</h2>
+                    <p>See what others are sharing and join the conversation!</p>
+                </div>
+
+                <div id="posts-container" class="posts-container">
+                    <!-- Sample Post -->
+                    <div class="post-card">
+                        <div class="post-header">
+                            <div>
+                                <h3 class="post-title">Welcome to DigitalDiary</h3>
+                                <p class="post-meta">By Admin - December 1, 2024</p>
+                            </div>
+                        </div>
+                        
+                        <p class="post-content">This is a sample blog post. Start sharing your thoughts with the community!</p>
+                        
+                        <div class="post-footer">
+                            <span class="reply-count">3 Replies</span>
+                            <button class="btn btn-secondary" onclick="viewPost(1)">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual Post View Page -->
+            <div id="post-page" class="page">
+                <a href="#" class="back-link" onclick="showPage('feed')">← Back to Feed</a>
+                
+                <div class="post-detail">
+                    <div class="post-detail-header">
+                        <div>
+                            <h1 id="post-detail-title">Post Title</h1>
+                            <p id="post-detail-meta" class="post-meta">By Author - Date</p>
+                        </div>
+                        <div class="post-actions">
+                            <button class="icon-btn edit-btn">Edit</button>
+                            <button class="icon-btn delete-btn">Delete</button>
+                        </div>
+                    </div>
+                    
+                    <p id="post-detail-content" class="post-detail-content">Post content goes here...</p>
+                </div>
+
+                <div class="replies-section">
+                    <h3>Replies (<span id="reply-count">0</span>)</h3>
+                    
+                    <div class="reply-form">
+                        <textarea id="reply-input" placeholder="Write a reply..." rows="3"></textarea>
+                        <button class="btn btn-primary">Post Reply</button>
+                    </div>
+
+                    <div id="replies-container" class="replies-container">
+                        <!-- Sample Reply -->
+                        <div class="reply-card">
+                            <div class="reply-header">
+                                <p class="reply-meta">User1 - December 1, 2024</p>
+                                <div class="reply-actions">
+                                    <button class="icon-btn-small edit-btn">Edit</button>
+                                    <button class="icon-btn-small delete-btn">Delete</button>
+                                </div>
+                            </div>
+                            <p class="reply-content">This is a sample reply to the post.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Post Page -->
+            <div id="create-page" class="page">
+                <div class="create-post-card">
+                    <h2>Create New Post</h2>
+                    
+                    <form id="create-post-form" class="create-form">
+                        <div class="form-group">
+                            <label for="post-title">Title</label>
+                            <input type="text" id="post-title" placeholder="Enter post title..." required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="post-content">Content</label>
+                            <textarea id="post-content" placeholder="Share your thoughts..." rows="10" required></textarea>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">Publish Post</button>
+                            <button type="button" class="btn btn-secondary" onclick="showPage('feed')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        <!--When I was writing this locally before the repo I just put this script here to quickly
+        view the html. We will need to remove this and add it to out official js file-->
+        <script>
+        // Simple page navigation
+        function showPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const pageElement = document.getElementById(pageName + '-page');
+            if (pageElement) {
+                pageElement.classList.add('active');
+            }
+            
+            // Show/hide navbar based on page
+            const navbar = document.getElementById('navbar');
+            if (pageName === 'login' || pageName === 'register') {
+                navbar.style.display = 'none';
+            } else {
+                navbar.style.display = 'block';
+            }
+        }
+
+        // Logout function
+        function logout() {
+            showPage('login');
+        }
+
+        // View post function
+        function viewPost(postId) {
+            showPage('post');
+        }
+
+        // Wait for DOM to load before adding event listeners
+        window.addEventListener('DOMContentLoaded', function() {
+            // Hide navbar on initial load (login page)
+            document.getElementById('navbar').style.display = 'none';
+            
+            // Login form handler
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const username = document.getElementById('login-username').value;
+                    if (username) {
+                        document.getElementById('username-display').textContent = username;
+                        showPage('feed');
+                    }
+                });
+            }
+
+            // Register form handler
+            const registerForm = document.getElementById('register-form');
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showPage('login');
+                });
+            }
+
+            // Create post form handler
+            const createForm = document.getElementById('create-post-form');
+            if (createForm) {
+                createForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showPage('feed');
+                });
+            }
+        });
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
