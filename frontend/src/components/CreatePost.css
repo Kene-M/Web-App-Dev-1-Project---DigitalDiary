@@ -1,0 +1,73 @@
+/* Layout wrapper for create post page */
+.create-page {
+  max-width: 900px;
+  margin: 2rem auto 3rem;
+  padding: 0 1rem;
+}
+
+/* Main create post card */
+.create-post-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.create-post-card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: black;
+}
+
+/* Form layout */
+.create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* You can reuse .form-group from auth styles or redefine here if needed */
+.create-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.create-form label {
+  font-weight: 600;
+  color: black;
+}
+
+.create-form input,
+.create-form textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid gray;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.create-form input:focus,
+.create-form textarea:focus {
+  outline: none;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 1px rgba(124, 58, 237);
+}
+
+/* Buttons row */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .create-page {
+    margin-top: 1rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

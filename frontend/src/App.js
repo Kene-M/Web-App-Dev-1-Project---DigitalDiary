@@ -1,19 +1,22 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+
 import LoginPage from './components/LoginPage';
 import FeedPage from './components/FeedPage';
+import RegisterPage from './components/RegisterPage';
+import PostPage from './components/PostPage';
+import CreatePost from './components/CreatePost';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/feed" element={<FeedPage />} />
-        <Route path="/post/:id" element={<PostPage />} />
-        <Route path="/create" element={<CreatePost />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/feed" element={<FeedPage />} />
+      <Route path="/post/:id" element={<PostPage />} />
+      <Route path="/create" element={<CreatePost />} />
+      <Route path="*" element={<div>Page not found</div>} /> 
+    </Routes>
   );
 }
 
