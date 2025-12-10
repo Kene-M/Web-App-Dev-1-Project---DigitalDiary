@@ -11,7 +11,11 @@
     "start": "nodemon server.js"
   },
   "dependencies": {
+<<<<<<< HEAD
     "bcryptjs": "^3.0.3",
+=======
+    "bcrypt": "^6.0.0",
+>>>>>>> a6f23f674ec3b21e28430c0a5b58815ed1aca4f8
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
