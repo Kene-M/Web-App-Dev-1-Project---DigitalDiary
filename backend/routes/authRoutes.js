@@ -3,7 +3,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 // routes/authRoutes.js
-const User = require('../models/user'); // <-- capital U, matches User.js
+const User = require('../models/User'); 
 
 
 const router = express.Router();
