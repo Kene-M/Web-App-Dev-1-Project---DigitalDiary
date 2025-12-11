@@ -7,7 +7,7 @@ DigitalDiary is a lightweight MERN (MongoDB, Express.js, React, Node.js) full-st
 - **Kene Maduabum** (Backend Lead, MongoDB, Github setup)
 - **Megan Land** (React Lead, Login)
 
-**YouTube video link to the recorded presentation**:  [*Insert link here*]
+**YouTube video link to the recorded presentation**:  [https://youtu.be/fckvX-7W_YQ]
 
 ## Technical Setup & Running the Application
 ### Prerequisites
